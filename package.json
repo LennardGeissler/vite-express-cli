@@ -1,6 +1,6 @@
 {
   "name": "vite-express-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "CLI-Tool for creating a full-stack project structure",
   "bin": {
     "vite-express-cli": "./bin/vite-express-cli.cmd"
