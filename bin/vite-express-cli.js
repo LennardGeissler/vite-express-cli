@@ -1,11 +1,11 @@
 import { execSync } from "child_process";
 import { mkdirSync, writeFileSync } from "fs";
-import path from "path";
+import { join } from "path";
 
 const projectName = process.argv[2] || "my-project";
-const root = path.join(process.cwd(), projectName);
-const clientDir = path.join(root, "client");
-const serverDir = path.join(root, "server");
+const root = join(process.cwd(), projectName);
+const clientDir = join(root, "client");
+const serverDir = join(root, "server");
 
 // Create project structure
 mkdirSync(root, { recursive: true });
@@ -27,7 +27,7 @@ execSync("npm install --save-dev typescript @types/express ts-node nodemon", { c
 
 // Create TypeScript config for server
 writeFileSync(
-    path.join(serverDir, "tsconfig.json"),
+    join(serverDir, "tsconfig.json"),
     JSON.stringify({
         compilerOptions: {
             target: "ES6",
@@ -41,18 +41,18 @@ writeFileSync(
 
 // Create folders in client/src
 ["assets", "components", "hooks", "services", "types", "utils"].forEach(dir => 
-    mkdirSync(path.join(clientDir, "src", dir), { recursive: true })
+    mkdirSync(join(clientDir, "src", dir), { recursive: true })
 );
 
 // Create folders in server/src
 ["models", "controllers", "routes", "services", "middlewares", "types", "utils"].forEach(dir => 
-    mkdirSync(path.join(serverDir, "src", dir), { recursive: true })
+    mkdirSync(join(serverDir, "src", dir), { recursive: true })
 );
 
 // Create standard files
 console.log("📄 Creating standard files...");
-writeFileSync(path.join(root, "README.md"), `# ${projectName}\n\nGenerated project setup.`);
-writeFileSync(path.join(root, "LICENSE"), "MIT License\n\nGenerated license file.");
-writeFileSync(path.join(root, ".gitignore"), "node_modules\ndist\n.env\n");
+writeFileSync(join(root, "README.md"), `# ${projectName}\n\nGenerated project setup.`);
+writeFileSync(join(root, "LICENSE"), "MIT License\n\nGenerated license file.");
+writeFileSync(join(root, ".gitignore"), "node_modules\ndist\n.env\n");
 
 console.log("✅ Setup complete!");

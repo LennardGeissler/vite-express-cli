@@ -2,8 +2,8 @@
   "name": "vite-express-cli",
   "version": "1.0.0",
   "description": "CLI-Tool for creating a full-stack project structure",
-  "scripts": {
-    "vite-express-cli": "./bin/vite-express-cli.js"
+  "bin": {
+    "vite-express-cli": "./bin/vite-express-cli.cmd"
   },
   "keywords": [],
   "author": "Lennard Geißler",
